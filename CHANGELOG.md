@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/resourge/vue3-hook-form/compare/v1.1.0...v1.2.0) (2024-02-16)
+
+
+### Features
+
+* **added touches state:** added access to touches ([6c03f02](https://github.com/resourge/vue3-hook-form/commit/6c03f025cd11b3665df9e08c26aa96ca331ec23a))
+
 # [1.1.0](https://github.com/resourge/vue3-hook-form/compare/v1.0.0...v1.1.0) (2024-02-07)
 
 
