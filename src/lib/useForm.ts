@@ -21,6 +21,7 @@ type ValidationWithErrors = {
 };
 
 type FormOptions<T extends Record<string, any>> = {
+  resetIsDirtyOnSubmit?: boolean;
   validate?: (form: UnwrapNestedRefs<T>, changedKeys: Array<FormKey<T>>) => void | ValidationErrors | Promise<void | ValidationErrors>;
   validateDefault?: boolean;
 };
@@ -165,7 +166,7 @@ type FormState<T extends Record<string, any>> = {
 
 
 export const useForm = <T extends Record<string, any>>(defaultValues: T, options: FormOptions<T> = {}): FormState<T> => {
-  const { validate, validateDefault = false } = options;
+  const { validate, validateDefault = false, resetIsDirtyOnSubmit = true } = options;
 
   const state = reactive<State<T>>({
     errors: {} as FormErrors<T>,
@@ -236,7 +237,9 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
     if (isValid.value) {
       await onSubmit(state.form);
       // reset is dirty
-      resetIsDirty() // TODO falar com o ze tem de ser await se possivel
+      if(resetIsDirtyOnSubmit) {
+        resetIsDirty() // TODO falar com o ze tem de ser await se possivel
+      }
     }
   };
 
