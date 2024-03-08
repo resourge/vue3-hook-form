@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/resourge/vue3-hook-form/compare/v1.2.0...v1.3.0) (2024-03-08)
+
+
+### Features
+
+* **support resetisdirtyonsubmit:** support resetIsDirtyOnSubmit flag ([3bec8aa](https://github.com/resourge/vue3-hook-form/commit/3bec8aa6a06f68c2c72094f43aa0579ce04c5c51))
+
 # [1.2.0](https://github.com/resourge/vue3-hook-form/compare/v1.1.0...v1.2.0) (2024-02-16)
 
 
