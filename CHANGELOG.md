@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/resourge/vue3-hook-form/compare/v1.4.3...v1.4.4) (2024-04-04)
+
+
+### Bug Fixes
+
+* **restore state:** restore state ([a2c78d7](https://github.com/resourge/vue3-hook-form/commit/a2c78d7b13ae3c5c92f85bcc160c58f6e9b300d3))
+
 ## [1.4.3](https://github.com/resourge/vue3-hook-form/compare/v1.4.2...v1.4.3) (2024-04-04)
 
 
