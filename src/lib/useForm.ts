@@ -23,6 +23,10 @@ type ValidationWithErrors = {
 
 type FormOptions<T extends Record<string, any>> = {
   /**
+  * Persist the form state in the memory.
+  */
+  persistState?: boolean
+  /**
    * Indicates whether the form should be reset to its initial state after it is submitted.
    */
   resetIsDirtyOnSubmit?: boolean;
@@ -38,10 +42,6 @@ type FormOptions<T extends Record<string, any>> = {
    * Indicates whether the form should be validated by default.
    */
   validateDefault?: boolean;
-  /**
-   * Persist the form state in the memory.
-   */
-  persistState?: boolean
 };
 
 type FormField<T, K> = {
@@ -136,7 +136,7 @@ type FormState<T extends Record<string, any>> = {
    * Indicates whether the form is currently in a valid state (i.e., no validation errors).
    */
   isValid: boolean;
-  
+
   /**
    * Attaches an event listener to a specific form field. When the field's value changes,
    * the provided callback function is invoked with the new value.
@@ -199,7 +199,7 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
 
   const getterSetter = useGetterSetter<T>();
   const { clearCacheErrors, getErrors, hasError } = useErrors<T>(state, options);
-	const onErrors = createFormErrors<T>((errors) => errors);
+  const onErrors = createFormErrors<T>((errors) => errors);
 
   const validateForm = async (forceValidation: boolean) => {
     if (validate) {
@@ -208,12 +208,12 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
       // @ts-expect-error no types
       const result = await validate(state.form, changedKeys);
       const newErrors = onErrors(result)
-      
+
       // clear
       state.errors = newErrors as UnwrapRef<FormErrors<T>>
-      
+
       //  update new errors
-      if(forceValidation) {
+      if (forceValidation) {
         Object.keys(newErrors).forEach(key => {
           // @ts-expect-error no types
           state.touches[key] = true
@@ -237,17 +237,17 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
     // errors.splice(0, errors.length);
     isValid.value = false;
     // clear touches
-    state.touches = {}as UnwrapRef<Touches<T>>
+    state.touches = {} as UnwrapRef<Touches<T>>
 
   };
 
-   if(validateDefault) {
-       watchEffect(() => {
-          clearCacheErrors();
-          validateForm(false);
-        });
-   }
-   
+  if (validateDefault) {
+    watchEffect(() => {
+      clearCacheErrors();
+      validateForm(false);
+    });
+  }
+
 
   const handleSubmit = (onSubmit: (form: UnwrapNestedRefs<T>) => void) => async (e?: Event) => {
     if (e) {
@@ -257,12 +257,12 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
     validateForm(true);
 
     if (isValid.value) {
-      if(persistState) {
+      if (persistState) {
         set(formSymbol, state.form)
       }
       await onSubmit(state.form);
       // reset is dirty
-      if(resetIsDirtyOnSubmit) {
+      if (resetIsDirtyOnSubmit) {
         resetIsDirty() // TODO falar com o ze tem de ser await se possivel
       }
     }
@@ -283,7 +283,7 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
 
     const isDirty = computed<boolean>(() => {
       const hasFoundParentKey = Object.keys(state.touches).some(touchKey => touchKey.includes(key));
-      return hasFoundParentKey ?? state.touches[key] 
+      return hasFoundParentKey ?? state.touches[key]
     })
 
     const onChange = (newValue: UnwrapNestedRefs<T[K]>) => {
