@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/resourge/vue3-hook-form/compare/v1.4.4...v1.4.5) (2024-04-04)
+
+
+### Bug Fixes
+
+* **fix reference function:** fix reference Function ([ac194d3](https://github.com/resourge/vue3-hook-form/commit/ac194d3bc8afb288932bd3a511acd488809f8afc))
+
 ## [1.4.4](https://github.com/resourge/vue3-hook-form/compare/v1.4.3...v1.4.4) (2024-04-04)
 
 
