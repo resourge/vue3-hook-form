@@ -188,7 +188,7 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
 
   const { get, set } = usePersistState<T>();
 
-  const defaultState = persistState && get(persistStateKey) ? get(persistStateKey) : defaultValues;
+  const defaultState = persistStateKey && get(persistStateKey) ? get(persistStateKey) : defaultValues;
 
   const state = reactive<State<T>>({
     errors: {} as FormErrors<T>,
