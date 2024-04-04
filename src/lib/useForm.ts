@@ -9,6 +9,7 @@ import { PathValue } from './types/PathValue';
 import { State } from './types/types';
 import { useErrors } from './useErrors';
 import { ValidationErrors } from './validators/setDefaultOnError';
+import { usePersistState } from './hooks/usePersistState';
 
 type ValidationError = {
   error: string;
@@ -21,9 +22,26 @@ type ValidationWithErrors = {
 };
 
 type FormOptions<T extends Record<string, any>> = {
+  /**
+   * Indicates whether the form should be reset to its initial state after it is submitted.
+   */
   resetIsDirtyOnSubmit?: boolean;
+  /**
+   * A function that validates the form data. This function is invoked whenever the form data
+   * 
+   * @param form 
+   * @param changedKeys 
+   * @returns 
+   */
   validate?: (form: UnwrapNestedRefs<T>, changedKeys: Array<FormKey<T>>) => void | ValidationErrors | Promise<void | ValidationErrors>;
+  /**
+   * Indicates whether the form should be validated by default.
+   */
   validateDefault?: boolean;
+  /**
+   * Persist the form state in the memory.
+   */
+  persistState?: boolean
 };
 
 type FormField<T, K> = {
@@ -166,11 +184,15 @@ type FormState<T extends Record<string, any>> = {
 
 
 export const useForm = <T extends Record<string, any>>(defaultValues: T, options: FormOptions<T> = {}): FormState<T> => {
-  const { validate, validateDefault = false, resetIsDirtyOnSubmit = true } = options;
+  const { validate, validateDefault = false, resetIsDirtyOnSubmit = true, persistState } = options;
+
+  const { get, set } = usePersistState<T>();
+  const formSymbol = Symbol(defaultValues.name ?? defaultValues);
+  const defaultState = persistState ? get(formSymbol) : defaultValues;
 
   const state = reactive<State<T>>({
     errors: {} as FormErrors<T>,
-    form: defaultValues,
+    form: defaultState,
     touches: {} as Touches<T>
   })
   const isValid = ref(false);
@@ -235,6 +257,9 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
     validateForm(true);
 
     if (isValid.value) {
+      if(persistState) {
+        set(formSymbol, state.form)
+      }
       await onSubmit(state.form);
       // reset is dirty
       if(resetIsDirtyOnSubmit) {
