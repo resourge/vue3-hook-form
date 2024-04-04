@@ -108,15 +108,16 @@ type FormState<T extends Record<string, any>> = {
    * @param key - The key (field name) of the field to retrieve the value for.
    * @returns The current value of the specified field.
    */
+
   getValue: <K extends keyof T>(key: FormKey<T>) => UnwrapNestedRefs<T[K]>;
 
   /**
    * Handles form submission by invoking the provided callback function when the form is submitted.
    * Returns a function that can be used as an event handler for form submission events.
-   *
-   * @param onSubmit - The callback function to be invoked when the form is submitted.
-   * @returns An event handler function for form submission.
-   */
+  *
+  * @param onSubmit - The callback function to be invoked when the form is submitted.
+  * @returns An event handler function for form submission.
+  */
   handleSubmit: (onSubmit: (form: UnwrapNestedRefs<T>) => void) => (e?: Event) => void;
 
   /**
@@ -126,6 +127,11 @@ type FormState<T extends Record<string, any>> = {
    * @returns `true` if the field has validation errors, otherwise `false`.
    */
   hasError: (key: FormKey<T>) => boolean;
+
+  /**
+   * Indicates whether the form has been restored from a persisted state.
+   */
+  hasRestoredFromPersisted: Ref<boolean>;
 
   /**
    * Indicates whether the form is dirty.
@@ -186,10 +192,13 @@ type FormState<T extends Record<string, any>> = {
 export const useForm = <T extends Record<string, any>>(defaultValues: T, options: FormOptions<T> = {}): FormState<T> => {
   const { validate, validateDefault = false, resetIsDirtyOnSubmit = true, persistFormKey } = options;
 
+  const hasRestoredFromPersisted = ref(false);
+
   const { get, set } = usePersistState<T>();
 
-  if(persistFormKey && get(persistFormKey)) {
+  if (persistFormKey && get(persistFormKey)) {
     defaultValues = get(persistFormKey);
+    hasRestoredFromPersisted.value = true;
   }
 
   const state = reactive<State<T>>({
@@ -240,7 +249,8 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
     isValid.value = false;
     // clear touches
     state.touches = {} as UnwrapRef<Touches<T>>
-
+    // reset restored from persisted
+    hasRestoredFromPersisted.value = false;
   };
 
   if (validateDefault) {
@@ -342,6 +352,7 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
     reset,
     watch,
     resetIsDirty,
-    touches: state.touches
+    touches: state.touches,
+    hasRestoredFromPersisted
   };
 };
