@@ -23,9 +23,9 @@ type ValidationWithErrors = {
 
 type FormOptions<T extends Record<string, any>> = {
   /**
-  * Persist the form state in the memory.
+  * Indicates whether the form state should be persisted in memory.
   */
-  persistState?: boolean
+  persistStateKey?: string;
   /**
    * Indicates whether the form should be reset to its initial state after it is submitted.
    */
@@ -184,11 +184,11 @@ type FormState<T extends Record<string, any>> = {
 
 
 export const useForm = <T extends Record<string, any>>(defaultValues: T, options: FormOptions<T> = {}): FormState<T> => {
-  const { validate, validateDefault = false, resetIsDirtyOnSubmit = true, persistState } = options;
+  const { validate, validateDefault = false, resetIsDirtyOnSubmit = true, persistStateKey } = options;
 
   const { get, set } = usePersistState<T>();
-  const formSymbol = Symbol(defaultValues.name ?? defaultValues);
-  const defaultState = persistState && get(formSymbol) ? get(formSymbol) : defaultValues;
+
+  const defaultState = persistState && get(persistStateKey) ? get(persistStateKey) : defaultValues;
 
   const state = reactive<State<T>>({
     errors: {} as FormErrors<T>,
@@ -257,8 +257,8 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
     validateForm(true);
 
     if (isValid.value) {
-      if (persistState) {
-        set(formSymbol, state.form)
+      if (persistStateKey) {
+        set(persistStateKey, state.form)
       }
       await onSubmit(state.form);
       // reset is dirty
