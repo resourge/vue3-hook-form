@@ -1,3 +1,10 @@
+## [1.4.7](https://github.com/resourge/vue3-hook-form/compare/v1.4.6...v1.4.7) (2024-04-04)
+
+
+### Bug Fixes
+
+* **added new flag hasrestoredfrompersisted:** new flag has RestoredFromPersisted ([66da9df](https://github.com/resourge/vue3-hook-form/commit/66da9df3531b2e7107f01fee57ea0c926e6c2133))
+
 ## [1.4.6](https://github.com/resourge/vue3-hook-form/compare/v1.4.5...v1.4.6) (2024-04-04)
 
 
