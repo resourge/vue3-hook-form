@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/resourge/vue3-hook-form/compare/v1.4.0...v1.4.1) (2024-04-04)
+
+
+### Bug Fixes
+
+* **check if exists persists:** checks if persists exists ([d37755a](https://github.com/resourge/vue3-hook-form/commit/d37755a0cb175f6eb7d96cef080ae349ae1f4fe6))
+
 # [1.4.0](https://github.com/resourge/vue3-hook-form/compare/v1.3.0...v1.4.0) (2024-04-04)
 
 
