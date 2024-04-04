@@ -188,7 +188,7 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
 
   const { get, set } = usePersistState<T>();
   const formSymbol = Symbol(defaultValues.name ?? defaultValues);
-  const defaultState = persistState ? get(formSymbol) : defaultValues;
+  const defaultState = persistState && get(formSymbol) ? get(formSymbol) : defaultValues;
 
   const state = reactive<State<T>>({
     errors: {} as FormErrors<T>,
