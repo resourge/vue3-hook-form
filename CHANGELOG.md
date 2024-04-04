@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/resourge/vue3-hook-form/compare/v1.4.1...v1.4.2) (2024-04-04)
+
+
+### Bug Fixes
+
+* **fix key:** fix key storage ([c0a5dfe](https://github.com/resourge/vue3-hook-form/commit/c0a5dfe154e73bf011bf2e92b282b7882fbdb2b2))
+
 ## [1.4.1](https://github.com/resourge/vue3-hook-form/compare/v1.4.0...v1.4.1) (2024-04-04)
 
 
