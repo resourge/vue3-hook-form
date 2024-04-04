@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/resourge/vue3-hook-form/compare/v1.4.5...v1.4.6) (2024-04-04)
+
+
+### Bug Fixes
+
+* **rename persiststatekey to persistformkey:** rename persistStateKey to persistFormKey ([745d5a1](https://github.com/resourge/vue3-hook-form/commit/745d5a1dd7e9f3f79f9bb0a76c512faade41c413))
+
 ## [1.4.5](https://github.com/resourge/vue3-hook-form/compare/v1.4.4...v1.4.5) (2024-04-04)
 
 
