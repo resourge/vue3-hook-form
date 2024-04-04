@@ -1,6 +1,6 @@
 {
 	"name": "@resourge/vue3-hook-form",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"description": "vue3-hook-form is a simple and basic controlled hook form. Aiming to create forms with minimal effort.",
 	"type": "module",
 	"private": false,

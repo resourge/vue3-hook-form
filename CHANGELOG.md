@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/resourge/vue3-hook-form/compare/v1.3.0...v1.4.0) (2024-04-04)
+
+
+### Features
+
+* **persist state:** option to enable persist state for form ([f9f0c63](https://github.com/resourge/vue3-hook-form/commit/f9f0c637e0f6537bfb9d67e6bdd5967f6fe5489a))
+
 # [1.3.0](https://github.com/resourge/vue3-hook-form/compare/v1.2.0...v1.3.0) (2024-03-08)
 
 
