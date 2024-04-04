@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/resourge/vue3-hook-form/compare/v1.4.2...v1.4.3) (2024-04-04)
+
+
+### Bug Fixes
+
+* **validation:** validation ([ecb7795](https://github.com/resourge/vue3-hook-form/commit/ecb7795bd47d79e5e7ef12cfa65d6eab1354cb83))
+
 ## [1.4.2](https://github.com/resourge/vue3-hook-form/compare/v1.4.1...v1.4.2) (2024-04-04)
 
 
