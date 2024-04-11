@@ -1,32 +1,41 @@
-## `useForm` Documentation
+# Vue 3 Form Hook
 
-### Introduction
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+## Description
 
 `useForm` is a custom hook designed to facilitate form state management and validation in Vue 3 applications. This documentation provides a comprehensive guide on how to integrate and utilize `useForm` effectively within your project.
 
-### Installation
+## Table of Contents
 
-To start using `useForm`, first, ensure you have the package installed in your Vue 3 project. You can install it via npm or yarn:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-```bash
-npm install vue3-hook-form
+## Installation
+
+To install use npm:
+
+```sh
+npm install @resourge/vue3-hook-form
 ```
 
-or
+or with Yarn:
 
-```bash
-yarn add vue3-hook-form
+```sh
+yarn add @resourge/vue3-hook-form
 ```
 
-### Usage
-
-#### Importing the Package
+## Usage
 
 ```javascript
 import { useForm } from 'vue3-hook-form';
 ```
 
-#### Defining Form Data Model and Validation Schema
+## Defining Form Data Model and Validation Schema
 
 ```javascript
 import { object, string } from '@resourge/schema';
@@ -51,7 +60,7 @@ const schema = object<LoginUserFormModel>({
 });
 ```
 
-#### Creating a Form Instance
+## Creating a Form Instance
 
 ```javascript
 export const useLoginForm = () => {
@@ -64,7 +73,7 @@ export const useLoginForm = () => {
 };
 ```
 
-#### Using the Form Instance in Vue Component
+## Using the Form Instance in Vue Component
 
 ```vue
 <template>
@@ -106,7 +115,7 @@ export default {
 
 `FormState` represents the state of a form managed by `useForm`. It offers various methods and properties to interact with and manage the form's state and data.
 
-#### Properties and Methods
+## Properties and Methods
 
 - **`changeValue(key, value)`**: Updates the value of a specific field in the form.
 - **`errors`**: An object containing validation errors for the form fields.
@@ -164,4 +173,25 @@ export const useUserProfileForm = () => {
 };
 ```
 
-This documentation provides a comprehensive guide on how to integrate `useForm` into your Vue 3 applications, enabling efficient form management and validation.
+For more detailed usage instructions, refer to the [documentation](#documentation).
+
+## Documentation
+
+For comprehensive documentation and usage examples, visit the [Vue 3 Form Hook documentation](https://resourge.vercel.app/docs/vue3-hook-form/intro).
+
+## Contributing
+
+Contributions to Vue 3 Form Hook are welcome! To contribute, please follow the [contributing guidelines](CONTRIBUTING.md).
+
+## License
+
+Vue 3 Form Hook is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For questions or support, please contact the maintainers:
+- Email: support@resourge.com
+- GitHub: [Resourge](https://github.com/resourge)
+
+
+This README provides information about the Vue 3 Form Hook project, including installation instructions, usage guidelines, links to documentation and contributing guidelines, licensing information, and contact details for project maintainers. The MIT license is also included at the end. You can use this template as a starting point for other Resourge repositories, replacing the specific information with details relevant to each project.
