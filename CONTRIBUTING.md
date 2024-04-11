@@ -43,6 +43,6 @@ All contributions to Vue 3 Hook Form are reviewed by project maintainers before 
 
 ## Contact
 
-If you have any questions or need further assistance, please feel free to reach out to us by [email](mailto:support@resourge.com) or [opening a new issue](link-to-issue-tracker) in the issue tracker.
+If you have any questions or need further assistance, please feel free to reach out to us by [opening a new issue](link-to-issue-tracker) in the issue tracker.
 
 We appreciate your contributions to Vue 3 Hook Form and look forward to working with you!

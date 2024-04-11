@@ -190,8 +190,4 @@ Vue 3 Form Hook is licensed under the [MIT License](LICENSE).
 ## Contact
 
 For questions or support, please contact the maintainers:
-- Email: support@resourge.com
 - GitHub: [Resourge](https://github.com/resourge)
-
-
-This README provides information about the Vue 3 Form Hook project, including installation instructions, usage guidelines, links to documentation and contributing guidelines, licensing information, and contact details for project maintainers. The MIT license is also included at the end. You can use this template as a starting point for other Resourge repositories, replacing the specific information with details relevant to each project.
