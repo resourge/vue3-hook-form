@@ -116,9 +116,10 @@ type FormState<T extends Record<string, any>> = {
    * Returns a function that can be used as an event handler for form submission events.
   *
   * @param onSubmit - The callback function to be invoked when the form is submitted.
+  * @param onInvalid - The callback when the form is invalid returns an object containing validation errors for the form fields.
   * @returns An event handler function for form submission.
   */
-  handleSubmit: (onSubmit: (form: UnwrapNestedRefs<T>) => void) => (e?: Event) => void;
+  handleSubmit: (onSubmit: (form: UnwrapNestedRefs<T>) => void, onInvalid?: (errors: UnwrapNestedRefs<FormErrors<T>>) => void) => (e?: Event) => void;
 
   /**
    * Checks if a specific field in the form has validation errors.
@@ -261,7 +262,7 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
   }
 
 
-  const handleSubmit = (onSubmit: (form: UnwrapNestedRefs<T>) => void) => async (e?: Event) => {
+  const handleSubmit = (onSubmit: (form: UnwrapNestedRefs<T>) => void, onInvalid?: (errors: UnwrapNestedRefs<FormErrors<T>>) => void) => async (e?: Event) => {
     if (e) {
       e.preventDefault();
     }
@@ -275,7 +276,11 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
       await onSubmit(state.form);
       // reset is dirty
       if (resetIsDirtyOnSubmit) {
-        resetIsDirty() // TODO falar com o ze tem de ser await se possivel
+        resetIsDirty() // TODO can be improved
+      }
+    } else {
+      if(onInvalid) {
+        onInvalid(errors)
       }
     }
   };
