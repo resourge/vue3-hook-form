@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/resourge/vue3-hook-form/compare/v1.4.7...v1.5.0) (2024-06-13)
+
+
+### Features
+
+* **useform:** handleSubmit has support for onInvalid in case the form is invalid ([8bbfb78](https://github.com/resourge/vue3-hook-form/commit/8bbfb78c7c2f2151911433e4f71cb126aac18eb6))
+
 ## [1.4.7](https://github.com/resourge/vue3-hook-form/compare/v1.4.6...v1.4.7) (2024-04-04)
 
 
