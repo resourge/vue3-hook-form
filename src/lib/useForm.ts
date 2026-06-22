@@ -267,7 +267,7 @@ export const useForm = <T extends Record<string, any>>(defaultValues: T, options
       e.preventDefault();
     }
 
-    validateForm(true);
+    await validateForm(true);
 
     if (isValid.value) {
       if (persistFormKey) {
