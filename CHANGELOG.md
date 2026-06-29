@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/resourge/vue3-hook-form/compare/v1.5.0...v1.5.1) (2026-06-29)
+
+
+### Bug Fixes
+
+* **fix async validations:** added fix for preventing sometimes doubleclick on submit from async ([131c548](https://github.com/resourge/vue3-hook-form/commit/131c548721c00a346ecd3bbc361c1faf0d3963b2))
+
 # [1.5.0](https://github.com/resourge/vue3-hook-form/compare/v1.4.7...v1.5.0) (2024-06-13)
 
 
